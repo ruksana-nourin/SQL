@@ -10,7 +10,6 @@ $rows = $result->fetch_all(MYSQLI_ASSOC);
 
 $result_view = $db->query("SELECT * FROM vw_product");
 $rows_view = $result_view->fetch_all(MYSQLI_ASSOC);
-
 ?>
 
 
@@ -22,7 +21,10 @@ $rows_view = $result_view->fetch_all(MYSQLI_ASSOC);
     <title>Product</title>
 </head>
 <body>
-    
+    <nav>
+        <a href="manufacturer.php">Manufacturer</a>
+        <a href="product.php">Product</a>
+    </nav>
 
     
     <h1>Product View (More then 5000 tk)</h1>
