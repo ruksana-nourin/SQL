@@ -68,4 +68,19 @@ where p.manufacturer_id = m.id
 GROUP BY m.id, m.name;
 ";
 
+$sql= "SELECT m.name,
+       COUNT(p.id) total_product
+FROM manufacturer m
+LEFT JOIN product p
+       where p.manufacturer_id = m.id
+GROUP BY m.id, m.name;
+";
+
+SELECT m.name,
+       COUNT(p.id) AS total_product
+FROM manufacturer m
+LEFT JOIN product p
+       ON p.manufacturer_id = m.id
+GROUP BY m.id, m.name;
+
 ?>
