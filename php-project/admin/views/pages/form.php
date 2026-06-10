@@ -1,20 +1,4 @@
-<?php
-include_once 'config/base.php'; 
-?>
-<!--begin::header-->
-<?php include_once __DIR__.'/views/layouts/header.php';?>
-<!--end::header-->
-
-
-    <div class="app-wrapper">
-      <!--begin::navbar-->
-      <?php include_once __DIR__.'/views/layouts/nav.php';?>
-      <!--end::navbar-->
-
-      <!--begin::Sidebar-->
-      <?php include_once __DIR__.'/views/layouts/aside.php';?>
-      <!--end::Sidebar-->
-      <main class="app-main">
+ <main class="app-main">
         <div class="app-content-header">
           <div class="container-fluid">
             <div class="row">
@@ -360,9 +344,3 @@ include_once 'config/base.php';
           </div>
         </div>
       </main>
-      <!--begin::Footer-->
-      <?php include_once __DIR__.'/views/layouts/footer.php';?>
-      <!--end::Footer-->
-    </div>
-    
-<?php include_once __DIR__.'/views/layouts/foot.php';?>

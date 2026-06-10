@@ -42,18 +42,24 @@
               id="navigation"
             >
             <li class="nav-item">
-                <a href="index.php" class="nav-link">
+                <a href="dashboard" class="nav-link">
                   <i class="fa-solid fa-house"></i>
                   <p>Home</p>
                 </a>
               </li>
               
             <li class="nav-item">
-                <a href="form.php" class="nav-link">
+                <a href="form" class="nav-link">
                   <i class="fa-solid fa-file"></i>
                   <p>Form</p>
                 </a>
               </li>
+              <li class="nav-item">
+                    <a href="table" class="nav-link">
+                      <i class="nav-icon bi bi-table"></i>
+                      <p>Table</p>
+                    </a>
+                  </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon bi bi-speedometer"></i>
