@@ -44,14 +44,50 @@
             <li class="nav-item">
                 <a href="dashboard" class="nav-link">
                   <i class="fa-solid fa-house"></i>
-                  <p>Home</p>
+                  <p>Dashboard</p>
                 </a>
               </li>
               
             <li class="nav-item">
                 <a href="form" class="nav-link">
+                  <i class="fa-solid fa-barcode"></i>
+                  <p>POS</p>
+                </a>
+              </li>
+            <li class="nav-item">
+                <a href="form" class="nav-link">
+                  <i class="fa-solid fa-box"></i>
+                  <p>Products</p>
+                </a>
+              </li>
+            <li class="nav-item">
+                <a href="orders" class="nav-link">
+                 <i class="fa-solid fa-receipt"></i>
+                  <p>Orders</p>
+                </a>
+              </li>
+            <li class="nav-item">
+                <a href="orders" class="nav-link">
+                  <i class="fa-solid fa-list"></i>
+                  <p>Order Status</p>
+                </a>
+              </li>
+            <li class="nav-item">
+                <a href="orders" class="nav-link">
+                  <i class="fa-solid fa-money-bill"></i>
+                  <p>Payment Methods</p>
+                </a>
+              </li>
+            <li class="nav-item">
+                <a href="users" class="nav-link">
+                  <i class="fa-solid fa-users"></i>
+                  <p>Users</p>
+                </a>
+              </li>
+            <li class="nav-item">
+                <a href="orders" class="nav-link">
                   <i class="fa-solid fa-file"></i>
-                  <p>Form</p>
+                  <p>Roles</p>
                 </a>
               </li>
               <li class="nav-item">
