@@ -1,5 +1,6 @@
 <?php
 include_once 'config/base.php';
+include_once 'config/db.php';
 ?>
 <!--begin::header-->
 <?php include_once __DIR__ . '/views/layouts/header.php'; ?>

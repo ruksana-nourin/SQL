@@ -16,13 +16,30 @@ class User{
 
 
     public function create(){
-        
+        global $db;
+        $sql = "INSERT INTO users (name, email, role_id, password)
+         values ('$this->name', '$this->email', $this->role_id, '$this->password')";
+         $result= $db->query($sql);
+         if($db->error){
+            return $db->error;
+         }else{
+            return true;
+         }
+
+        //  if($result){
+        //     return $db->insert_id;
+        //  }else{
+        //     return $db->error;
+        //  }
     }
     public function update(){
 
     }
-    public function readAll(){
-
+    static public function readAll(){
+    global $db;
+    $sql = "select id, name, email from users order by id desc";
+    $result= $db->query($sql);
+    return $result->fetch_all(MYSQLI_ASSOC);
     }
     public function readById(){
 

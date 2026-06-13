@@ -1,3 +1,11 @@
+<?php
+require_once("models/user.class.php");
+$rows = User::readAll();
+// echo '<pre>';
+// print_r( $rows );
+// echo '</pre>';
+?>
+
 <!--begin::App Main-->
       <main class="app-main">
         <!--begin::App Content Header-->
@@ -46,13 +54,13 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr class="align-middle">
-                              <td>1.</td>
-                              <td>Star</td>
-                              <td>
-                                twinkle@gmail.com
-                                </div>
-                              </td>
+                            <?php foreach ($rows as $item){ ?>
+                            
+                            
+                          <tr class="align-middle">
+                              <td><?= $item['id']?></td>
+                              <td><?= $item['name']?></td>
+                              <td><?= $item['email']?></td>
                               <td>
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-default"> <i class="fa fa-eye text-primary"></i></button>
@@ -61,8 +69,9 @@
                                 </div>
                               </td>
                             </tr>
-                            
+                            <?php }?>
                           </tbody>
+                          
                         </table>
                     </div>
                   </div>
