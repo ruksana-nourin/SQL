@@ -1,0 +1,669 @@
+Microsoft Windows [Version 10.0.26200.8457]
+(c) Microsoft Corporation. All rights reserved.
+
+G:\wdpf-70ruksana_nourin\xammp\mysql\bin>mysql -u root -p
+Enter password:
+ERROR 2002 (HY000): Can't connect to MySQL server on 'localhost' (10061)
+
+G:\wdpf-70ruksana_nourin\xammp\mysql\bin>create database inventory_system;
+'create' is not recognized as an internal or external command,
+operable program or batch file.
+
+G:\wdpf-70ruksana_nourin\xammp\mysql\bin>mysql -u -p
+ERROR 2002 (HY000): Can't connect to MySQL server on 'localhost' (10061)
+
+G:\wdpf-70ruksana_nourin\xammp\mysql\bin>mysql -u root -p
+Enter password:
+ERROR 2002 (HY000): Can't connect to MySQL server on 'localhost' (10061)
+
+G:\wdpf-70ruksana_nourin\xammp\mysql\bin>show databases;
+'show' is not recognized as an internal or external command,
+operable program or batch file.
+
+G:\wdpf-70ruksana_nourin\xammp\mysql\bin>create database inventory_system;
+'create' is not recognized as an internal or external command,
+operable program or batch file.
+
+G:\wdpf-70ruksana_nourin\xammp\mysql\bin>show databases;
+'show' is not recognized as an internal or external command,
+operable program or batch file.
+
+G:\wdpf-70ruksana_nourin\xammp\mysql\bin>use inventory_system;
+'use' is not recognized as an internal or external command,
+operable program or batch file.
+
+G:\wdpf-70ruksana_nourin\xammp\mysql\bin>
+G:\wdpf-70ruksana_nourin\xammp\mysql\bin>create table brands (
+'create' is not recognized as an internal or external command,
+operable program or batch file.
+
+G:\wdpf-70ruksana_nourin\xammp\mysql\bin>id int auto_increment primary key,
+'id' is not recognized as an internal or external command,
+operable program or batch file.
+
+G:\wdpf-70ruksana_nourin\xammp\mysql\bin>name varchar(100) not null
+'name' is not recognized as an internal or external command,
+operable program or batch file.
+
+G:\wdpf-70ruksana_nourin\xammp\mysql\bin>);
+G:\wdpf-70ruksana_nourin\xammp\mysql\bin>
+G:\wdpf-70ruksana_nourin\xammp\mysql\bin>create table categories (
+'create' is not recognized as an internal or external command,
+operable program or batch file.
+
+G:\wdpf-70ruksana_nourin\xammp\mysql\bin>id int auto_increment primary key,
+'id' is not recognized as an internal or external command,
+operable program or batch file.
+
+G:\wdpf-70ruksana_nourin\xammp\mysql\bin>name varchar(100) not null
+'name' is not recognized as an internal or external command,
+operable program or batch file.
+
+G:\wdpf-70ruksana_nourin\xammp\mysql\bin>);
+G:\wdpf-70ruksana_nourin\xammp\mysql\bin>
+G:\wdpf-70ruksana_nourin\xammp\mysql\bin>create table products (
+'create' is not recognized as an internal or external command,
+operable program or batch file.
+
+G:\wdpf-70ruksana_nourin\xammp\mysql\bin>id int auto_increment primary key,
+'id' is not recognized as an internal or external command,
+operable program or batch file.
+
+G:\wdpf-70ruksana_nourin\xammp\mysql\bin>product_name varchar(100) not null,
+'product_name' is not recognized as an internal or external command,
+operable program or batch file.
+
+G:\wdpf-70ruksana_nourin\xammp\mysql\bin>brand_id int,
+'brand_id' is not recognized as an internal or external command,
+operable program or batch file.
+
+G:\wdpf-70ruksana_nourin\xammp\mysql\bin>category_id int,
+'category_id' is not recognized as an internal or external command,
+operable program or batch file.
+
+G:\wdpf-70ruksana_nourin\xammp\mysql\bin>price decimal(10,2),
+'price' is not recognized as an internal or external command,
+operable program or batch file.
+
+G:\wdpf-70ruksana_nourin\xammp\mysql\bin>is_active Boolean default true
+'is_active' is not recognized as an internal or external command,
+operable program or batch file.
+
+G:\wdpf-70ruksana_nourin\xammp\mysql\bin>show databases;
+'show' is not recognized as an internal or external command,
+operable program or batch file.
+
+G:\wdpf-70ruksana_nourin\xammp\mysql\bin>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| new_db             |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+6 rows in set (0.085 sec)
+
+MariaDB [(none)]> create database inventory_system;
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| inventory_system   |
+| mysql              |
+| new_db             |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+7 rows in set (0.002 sec)
+
+MariaDB [(none)]> use inventory_system;
+Database changed
+MariaDB [inventory_system]> create table brands (
+    -> id int auto_increment primary key,
+    -> name varchar(100) not null
+    -> );
+Query OK, 0 rows affected (0.150 sec)
+
+MariaDB [inventory_system]> create table categories (
+    -> id int auto_increment primary key,
+    -> name varchar(100) not null
+    -> );
+Query OK, 0 rows affected (0.164 sec)
+
+MariaDB [inventory_system]> create table products (
+    -> id int auto_increment primary key,
+    -> product_name varchar(100) not null,
+    -> brand_id int,
+    -> category_id int,
+    -> price decimal(10,2),
+    -> is_active Boolean default true
+    -> );
+Query OK, 0 rows affected (0.170 sec)
+
+MariaDB [inventory_system]> show tables;
++----------------------------+
+| Tables_in_inventory_system |
++----------------------------+
+| brands                     |
+| categories                 |
+| products                   |
++----------------------------+
+3 rows in set (0.002 sec)
+
+MariaDB [inventory_system]> drop database if exists inventory_system;
+Query OK, 3 rows affected (0.655 sec)
+
+MariaDB [(none)]> create database inventory_system;
+Query OK, 1 row affected (0.001 sec)
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| inventory_system   |
+| mysql              |
+| new_db             |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+7 rows in set (0.001 sec)
+
+MariaDB [(none)]> use inventory_system;
+Database changed
+MariaDB [inventory_system]> drop table if exists brands;
+Query OK, 0 rows affected, 1 warning (0.000 sec)
+
+MariaDB [inventory_system]> create table brands (
+    -> id int auto_increment primary key,
+    -> name varchar(100) not null
+    -> );
+Query OK, 0 rows affected (0.158 sec)
+
+MariaDB [inventory_system]> drop table if exists categories;
+Query OK, 0 rows affected, 1 warning (0.000 sec)
+
+MariaDB [inventory_system]> create table categories (
+    -> id int auto_increment primary key,
+    -> name varchar(100) not null
+    -> );
+Query OK, 0 rows affected (0.183 sec)
+
+MariaDB [inventory_system]> create table products (
+    -> id int auto_increment primary key,
+    -> product_name varchar(100) not null,
+    -> brand_id int,
+    -> category_id int,
+    -> price float,
+    -> is_active tinyint
+    -> );
+Query OK, 0 rows affected (0.159 sec)
+
+MariaDB [inventory_system]> show tables;
++----------------------------+
+| Tables_in_inventory_system |
++----------------------------+
+| brands                     |
+| categories                 |
+| products                   |
++----------------------------+
+3 rows in set (0.001 sec)
+
+MariaDB [inventory_system]> drop table if exists products;
+Query OK, 0 rows affected (0.150 sec)
+
+MariaDB [inventory_system]> create table products (
+    -> id int auto_increment primary key,
+    -> product_name varchar(100) not null,
+    -> brand_id int,
+    -> category_id int,
+    -> price float,
+    -> is_active tinyint
+    -> );
+Query OK, 0 rows affected (0.140 sec)
+
+MariaDB [inventory_system]> show tables;
++----------------------------+
+| Tables_in_inventory_system |
++----------------------------+
+| brands                     |
+| categories                 |
+| products                   |
++----------------------------+
+3 rows in set (0.001 sec)
+
+MariaDB [inventory_system]> insert into brands(name)
+    -> values("Apple"), ("Samsung"), ("Techno");
+Query OK, 3 rows affected (0.060 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+MariaDB [inventory_system]> select * from brands;
++----+---------+
+| id | name    |
++----+---------+
+|  1 | Apple   |
+|  2 | Samsung |
+|  3 | Techno  |
++----+---------+
+3 rows in set (0.001 sec)
+
+MariaDB [inventory_system]> insert into brands(name)
+    -> values("Apple"), ("Samsung"), ("Techno");
+Query OK, 3 rows affected (0.057 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+MariaDB [inventory_system]> insert into categories(name)
+    -> values("Mobile"), ("Smart Watch"), ("Laptop");
+Query OK, 3 rows affected (0.036 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+MariaDB [inventory_system]> select * from categories;
++----+-------------+
+| id | name        |
++----+-------------+
+|  1 | Mobile      |
+|  2 | Smart Watch |
+|  3 | Laptop      |
++----+-------------+
+3 rows in set (0.001 sec)
+
+MariaDB [inventory_system]> insert into products(name,brand_id,category_id,price,is_active)
+    -> values("iPhone 14",1,1,1000,1),
+    -> ("Samsung Galaxy S22",2,1,800,1),
+    -> ("Techno X2",3,2,600,1),
+    -> ("Smart Watch 2",1,2,300,1),
+    -> ("Laptop 2",1,3,2000,1),
+    -> ("Smart Watch 3",2,2,400,1);
+ERROR 1054 (42S22): Unknown column 'name' in 'field list'
+MariaDB [inventory_system]> select * from products;
+Empty set (0.001 sec)
+
+MariaDB [inventory_system]> insert into products(product_name,brand_id,category_id,price,is_active)
+    -> values("iPhone 14",1,1,1000,1),
+    -> ("Samsung Galaxy S22",2,1,800,1),
+    -> ("Techno X2",3,2,600,1),
+    -> ("Smart Watch 2",1,2,300,1),
+    -> ("Laptop 2",1,3,2000,1),
+    -> ("Smart Watch 3",2,2,400,1);
+Query OK, 6 rows affected (0.057 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+MariaDB [inventory_system]> select * from products;
++----+--------------------+----------+-------------+-------+-----------+
+| id | product_name       | brand_id | category_id | price | is_active |
++----+--------------------+----------+-------------+-------+-----------+
+|  1 | iPhone 14          |        1 |           1 |  1000 |         1 |
+|  2 | Samsung Galaxy S22 |        2 |           1 |   800 |         1 |
+|  3 | Techno X2          |        3 |           2 |   600 |         1 |
+|  4 | Smart Watch 2      |        1 |           2 |   300 |         1 |
+|  5 | Laptop 2           |        1 |           3 |  2000 |         1 |
+|  6 | Smart Watch 3      |        2 |           2 |   400 |         1 |
++----+--------------------+----------+-------------+-------+-----------+
+6 rows in set (0.001 sec)
+
+MariaDB [inventory_system]> drop view if exists vw_active_products;
+Query OK, 0 rows affected, 1 warning (0.001 sec)
+
+MariaDB [inventory_system]> create view vw_active_products as
+    -> select p.id, p.product_name, b.name as brand, c.name as category, p.price
+    -> from products p, brands b, categories c
+    -> where p.brand_id = b.id and p.category_id = c.id and p.is_active = 1;
+Query OK, 0 rows affected (0.031 sec)
+
+MariaDB [inventory_system]> select * from products;vw_active_products;
++----+--------------------+----------+-------------+-------+-----------+
+| id | product_name       | brand_id | category_id | price | is_active |
++----+--------------------+----------+-------------+-------+-----------+
+|  1 | iPhone 14          |        1 |           1 |  1000 |         1 |
+|  2 | Samsung Galaxy S22 |        2 |           1 |   800 |         1 |
+|  3 | Techno X2          |        3 |           2 |   600 |         1 |
+|  4 | Smart Watch 2      |        1 |           2 |   300 |         1 |
+|  5 | Laptop 2           |        1 |           3 |  2000 |         1 |
+|  6 | Smart Watch 3      |        2 |           2 |   400 |         1 |
++----+--------------------+----------+-------------+-------+-----------+
+6 rows in set (0.001 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'vw_active_products' at line 1
+MariaDB [inventory_system]> select * from vw_active_products;
++----+--------------------+---------+-------------+-------+
+| id | product_name       | brand   | category    | price |
++----+--------------------+---------+-------------+-------+
+|  1 | iPhone 14          | Apple   | Mobile      |  1000 |
+|  2 | Samsung Galaxy S22 | Samsung | Mobile      |   800 |
+|  3 | Techno X2          | Techno  | Smart Watch |   600 |
+|  4 | Smart Watch 2      | Apple   | Smart Watch |   300 |
+|  6 | Smart Watch 3      | Samsung | Smart Watch |   400 |
+|  5 | Laptop 2           | Apple   | Laptop      |  2000 |
++----+--------------------+---------+-------------+-------+
+6 rows in set (0.002 sec)
+
+MariaDB [inventory_system]> select * from vw_active_products where price > 1000;
++----+--------------+-------+----------+-------+
+| id | product_name | brand | category | price |
++----+--------------+-------+----------+-------+
+|  5 | Laptop 2     | Apple | Laptop   |  2000 |
++----+--------------+-------+----------+-------+
+1 row in set (0.001 sec)
+
+MariaDB [inventory_system]> select * from vw_active_products where category ="Mobile" and brand = "Apple";
++----+--------------+-------+----------+-------+
+| id | product_name | brand | category | price |
++----+--------------+-------+----------+-------+
+|  1 | iPhone 14    | Apple | Mobile   |  1000 |
++----+--------------+-------+----------+-------+
+1 row in set (0.036 sec)
+
+MariaDB [inventory_system]> select * from vw_active_products where category ="Mobile" and price > 500 and price < 1500;
++----+--------------------+---------+----------+-------+
+| id | product_name       | brand   | category | price |
++----+--------------------+---------+----------+-------+
+|  1 | iPhone 14          | Apple   | Mobile   |  1000 |
+|  2 | Samsung Galaxy S22 | Samsung | Mobile   |   800 |
++----+--------------------+---------+----------+-------+
+2 rows in set (0.002 sec)
+
+MariaDB [inventory_system]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| inventory_system   |
+| mysql              |
+| new_db             |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+7 rows in set (0.002 sec)
+
+MariaDB [inventory_system]> use new_db;
+Database changed
+MariaDB [new_db]> show tables;
++------------------+
+| Tables_in_new_db |
++------------------+
+| students         |
++------------------+
+1 row in set (0.001 sec)
+
+MariaDB [new_db]> desc students;
++-------------+------------------+------+-----+---------+----------------+
+| Field       | Type             | Null | Key | Default | Extra          |
++-------------+------------------+------+-----+---------+----------------+
+| id          | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+| name        | varchar(100)     | NO   |     | NULL    |                |
+| email       | varchar(100)     | YES  | UNI | NULL    |                |
+| address     | varchar(255)     | YES  |     | NULL    |                |
+| is_inactive | tinyint(4)       | YES  |     | 0       |                |
++-------------+------------------+------+-----+---------+----------------+
+5 rows in set (0.059 sec)
+
+MariaDB [new_db]> show * from students;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '* from students' at line 1
+MariaDB [new_db]> select * from students;
+Empty set (0.001 sec)
+
+MariaDB [new_db]> create table if not exists student_logs (
+    ->     id int auto_increment primary key,
+    ->     student_id int,
+    ->     status varchar(20),
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 5
+MariaDB [new_db]> select * from student_logs;
+ERROR 1146 (42S02): Table 'new_db.student_logs' doesn't exist
+MariaDB [new_db]> desc student_logs;
+ERROR 1146 (42S02): Table 'new_db.student_logs' doesn't exist
+MariaDB [new_db]> create table if not exists student_logs (
+    ->     id int auto_increment primary key,
+    ->     student_id int,
+    ->     status varchar(20)
+    -> );
+Query OK, 0 rows affected (0.184 sec)
+
+MariaDB [new_db]> desc student_logs;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| id         | int(11)     | NO   | PRI | NULL    | auto_increment |
+| student_id | int(11)     | YES  |     | NULL    |                |
+| status     | varchar(20) | YES  |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+3 rows in set (0.025 sec)
+
+MariaDB [new_db]> drop student_logs;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'student_logs' at line 1
+MariaDB [new_db]> drop table student_logs;
+Query OK, 0 rows affected (0.155 sec)
+
+MariaDB [new_db]> create table if not exists student_logs (
+    ->     id int auto_increment primary key,
+    ->     student_id int,
+    ->     status varchar(20),
+    ->     time timestamp
+    -> );
+Query OK, 0 rows affected (0.154 sec)
+
+MariaDB [new_db]> desc student_logs;
++------------+-------------+------+-----+---------------------+-------------------------------+
+| Field      | Type        | Null | Key | Default             | Extra                         |
++------------+-------------+------+-----+---------------------+-------------------------------+
+| id         | int(11)     | NO   | PRI | NULL                | auto_increment                |
+| student_id | int(11)     | YES  |     | NULL                |                               |
+| status     | varchar(20) | YES  |     | NULL                |                               |
+| time       | timestamp   | NO   |     | current_timestamp() | on update current_timestamp() |
++------------+-------------+------+-----+---------------------+-------------------------------+
+4 rows in set (0.024 sec)
+
+MariaDB [new_db]> create trigger add_student
+    -> after insert on students
+    -> for each row
+    -> insert into student_logs (student_id, status, time)
+    -> values (new.id, "Added", now());
+Query OK, 0 rows affected (0.072 sec)
+
+MariaDB [new_db]> show triggers;
++-------------+--------+----------+-------------------------------------------------------------------------------------+--------+------------------------+-----------------------------------------------------+----------------+----------------------+----------------------+--------------------+
+| Trigger     | Event  | Table    | Statement                                                                           | Timing | Created                | sql_mode                                            | Definer        | character_set_client | collation_connection | Database Collation |
++-------------+--------+----------+-------------------------------------------------------------------------------------+--------+------------------------+-----------------------------------------------------+----------------+----------------------+----------------------+--------------------+
+| add_student | INSERT | students | insert into student_logs (student_id, status, time)
+values (new.id, "Added", now()) | AFTER  | 2026-05-19 12:10:20.35 | NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION | root@localhost | cp850                | cp850_general_ci     | utf8mb4_general_ci |
++-------------+--------+----------+-------------------------------------------------------------------------------------+--------+------------------------+-----------------------------------------------------+----------------+----------------------+----------------------+--------------------+
+1 row in set (0.031 sec)
+
+MariaDB [new_db]> select * from student_logs;
+Empty set (0.001 sec)
+
+MariaDB [new_db]> insert into students (name, email)
+    -> values ("John Doe", "LZq0v@example.com");
+Query OK, 1 row affected (0.052 sec)
+
+MariaDB [new_db]> select * from students;
++----+----------+-------------------+---------+-------------+
+| id | name     | email             | address | is_inactive |
++----+----------+-------------------+---------+-------------+
+|  1 | John Doe | LZq0v@example.com | NULL    |           0 |
++----+----------+-------------------+---------+-------------+
+1 row in set (0.001 sec)
+
+MariaDB [new_db]> select * from student_logs;
++----+------------+--------+---------------------+
+| id | student_id | status | time                |
++----+------------+--------+---------------------+
+|  1 |          1 | Added  | 2026-05-19 12:20:57 |
++----+------------+--------+---------------------+
+1 row in set (0.001 sec)
+
+MariaDB [new_db]> insert into students (name, email)
+    -> values ("Mita", "mita@example.com");
+Query OK, 1 row affected (0.056 sec)
+
+MariaDB [new_db]> select * from student_logs;
++----+------------+--------+---------------------+
+| id | student_id | status | time                |
++----+------------+--------+---------------------+
+|  1 |          1 | Added  | 2026-05-19 12:20:57 |
+|  2 |          2 | Added  | 2026-05-19 12:25:29 |
++----+------------+--------+---------------------+
+2 rows in set (0.001 sec)
+
+MariaDB [new_db]> select * from students;
++----+----------+-------------------+---------+-------------+
+| id | name     | email             | address | is_inactive |
++----+----------+-------------------+---------+-------------+
+|  1 | John Doe | LZq0v@example.com | NULL    |           0 |
+|  2 | Mita     | mita@example.com  | NULL    |           0 |
++----+----------+-------------------+---------+-------------+
+2 rows in set (0.001 sec)
+
+MariaDB [new_db]> create trigger update_student
+    -> after update on students
+    -> for each row
+    -> insert into student_logs (student_id, status, time)
+    -> values (old.id, "Updated", now());
+Query OK, 0 rows affected (0.072 sec)
+
+MariaDB [new_db]> show triggers;
++----------------+--------+----------+---------------------------------------------------------------------------------------+--------+------------------------+-----------------------------------------------------+----------------+----------------------+----------------------+--------------------+
+| Trigger        | Event  | Table    | Statement                                                                             | Timing | Created                | sql_mode                                            | Definer        | character_set_client | collation_connection | Database Collation |
++----------------+--------+----------+---------------------------------------------------------------------------------------+--------+------------------------+-----------------------------------------------------+----------------+----------------------+----------------------+--------------------+
+| add_student    | INSERT | students | insert into student_logs (student_id, status, time)
+values (new.id, "Added", now())   | AFTER  | 2026-05-19 12:10:20.35 | NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION | root@localhost | cp850                | cp850_general_ci     | utf8mb4_general_ci |
+| update_student | UPDATE | students | insert into student_logs (student_id, status, time)
+values (old.id, "Updated", now()) | AFTER  | 2026-05-19 12:26:19.96 | NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION | root@localhost | cp850                | cp850_general_ci     | utf8mb4_general_ci |
++----------------+--------+----------+---------------------------------------------------------------------------------------+--------+------------------------+-----------------------------------------------------+----------------+----------------------+----------------------+--------------------+
+2 rows in set (0.020 sec)
+
+MariaDB [new_db]> select * from student_logs;
++----+------------+--------+---------------------+
+| id | student_id | status | time                |
++----+------------+--------+---------------------+
+|  1 |          1 | Added  | 2026-05-19 12:20:57 |
+|  2 |          2 | Added  | 2026-05-19 12:25:29 |
++----+------------+--------+---------------------+
+2 rows in set (0.001 sec)
+
+MariaDB [new_db]> update students
+    -> set name = "Mina"
+    -> where id = 1;
+Query OK, 1 row affected (0.052 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [new_db]> select * from student_logs;
++----+------------+---------+---------------------+
+| id | student_id | status  | time                |
++----+------------+---------+---------------------+
+|  1 |          1 | Added   | 2026-05-19 12:20:57 |
+|  2 |          2 | Added   | 2026-05-19 12:25:29 |
+|  3 |          1 | Updated | 2026-05-19 12:27:05 |
++----+------------+---------+---------------------+
+3 rows in set (0.001 sec)
+
+MariaDB [new_db]> select * from students;
++----+------+-------------------+---------+-------------+
+| id | name | email             | address | is_inactive |
++----+------+-------------------+---------+-------------+
+|  1 | Mina | LZq0v@example.com | NULL    |           0 |
+|  2 | Mita | mita@example.com  | NULL    |           0 |
++----+------+-------------------+---------+-------------+
+2 rows in set (0.001 sec)
+
+MariaDB [new_db]> update students
+    -> set name = "MINA", email = "mina@example.com"
+    -> where id = 1;
+Query OK, 1 row affected (0.046 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [new_db]> select * from students;
++----+------+------------------+---------+-------------+
+| id | name | email            | address | is_inactive |
++----+------+------------------+---------+-------------+
+|  1 | MINA | mina@example.com | NULL    |           0 |
+|  2 | Mita | mita@example.com | NULL    |           0 |
++----+------+------------------+---------+-------------+
+2 rows in set (0.001 sec)
+
+MariaDB [new_db]> select * from student_logs;
++----+------------+---------+---------------------+
+| id | student_id | status  | time                |
++----+------------+---------+---------------------+
+|  1 |          1 | Added   | 2026-05-19 12:20:57 |
+|  2 |          2 | Added   | 2026-05-19 12:25:29 |
+|  3 |          1 | Updated | 2026-05-19 12:27:05 |
+|  4 |          1 | Updated | 2026-05-19 12:38:24 |
++----+------------+---------+---------------------+
+4 rows in set (0.000 sec)
+
+MariaDB [new_db]> insert into students (name, email)
+    -> values ("TINA", "tina@example.com");
+Query OK, 1 row affected (0.041 sec)
+
+MariaDB [new_db]> create trigger delete_student
+    -> after delete on students
+    -> for each row
+    -> insert into student_logs (student_id, status, time)
+    -> values (old.id, "Deleted", now());
+Query OK, 0 rows affected (0.060 sec)
+
+MariaDB [new_db]> show trrigers;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'trrigers' at line 1
+MariaDB [new_db]> show triggers;
++----------------+--------+----------+---------------------------------------------------------------------------------------+--------+------------------------+-----------------------------------------------------+----------------+----------------------+----------------------+--------------------+
+| Trigger        | Event  | Table    | Statement                                                                             | Timing | Created                | sql_mode                                            | Definer        | character_set_client | collation_connection | Database Collation |
++----------------+--------+----------+---------------------------------------------------------------------------------------+--------+------------------------+-----------------------------------------------------+----------------+----------------------+----------------------+--------------------+
+| add_student    | INSERT | students | insert into student_logs (student_id, status, time)
+values (new.id, "Added", now())   | AFTER  | 2026-05-19 12:10:20.35 | NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION | root@localhost | cp850                | cp850_general_ci     | utf8mb4_general_ci |
+| update_student | UPDATE | students | insert into student_logs (student_id, status, time)
+values (old.id, "Updated", now()) | AFTER  | 2026-05-19 12:26:19.96 | NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION | root@localhost | cp850                | cp850_general_ci     | utf8mb4_general_ci |
+| delete_student | DELETE | students | insert into student_logs (student_id, status, time)
+values (old.id, "Deleted", now()) | AFTER  | 2026-05-19 12:41:41.35 | NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION | root@localhost | cp850                | cp850_general_ci     | utf8mb4_general_ci |
++----------------+--------+----------+---------------------------------------------------------------------------------------+--------+------------------------+-----------------------------------------------------+----------------+----------------------+----------------------+--------------------+
+3 rows in set (0.021 sec)
+
+MariaDB [new_db]> delete students
+    -> where id = 3;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where id = 3' at line 2
+MariaDB [new_db]> delete from students
+    -> where id = 3;
+Query OK, 1 row affected (0.039 sec)
+
+MariaDB [new_db]> select * from student_logs;
++----+------------+---------+---------------------+
+| id | student_id | status  | time                |
++----+------------+---------+---------------------+
+|  1 |          1 | Added   | 2026-05-19 12:20:57 |
+|  2 |          2 | Added   | 2026-05-19 12:25:29 |
+|  3 |          1 | Updated | 2026-05-19 12:27:05 |
+|  4 |          1 | Updated | 2026-05-19 12:38:24 |
+|  5 |          3 | Added   | 2026-05-19 12:40:20 |
+|  6 |          3 | Deleted | 2026-05-19 12:44:54 |
++----+------------+---------+---------------------+
+6 rows in set (0.001 sec)
+
+MariaDB [new_db]> select * from students;
++----+------+------------------+---------+-------------+
+| id | name | email            | address | is_inactive |
++----+------+------------------+---------+-------------+
+|  1 | MINA | mina@example.com | NULL    |           0 |
+|  2 | Mita | mita@example.com | NULL    |           0 |
++----+------+------------------+---------+-------------+
+2 rows in set (0.000 sec)
+
+MariaDB [new_db]>

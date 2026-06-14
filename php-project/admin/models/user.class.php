@@ -33,6 +33,14 @@ class User{
         //  }
     }
     public function update(){
+      global $db;
+      $sql = "UPDATE users SET 
+      name = '$this->name', 
+      email = '$this->email', 
+      role_id = $this->role_id 
+      WHERE id= $this->id";
+      
+      $db->query($sql);
 
     }
     static public function readAll(){
@@ -41,11 +49,20 @@ class User{
     $result= $db->query($sql);
     return $result->fetch_all(MYSQLI_ASSOC);
     }
-    public function readById(){
-
+   static public function readById($_id){
+   global $db;
+    $sql = "select id, name, email,role_id from users where id=$_id";
+    $result= $db->query($sql);
+    return $result->fetch_assoc();
     }
-    public function delete(){
-
+    static public function delete($_id){
+    global $db;
+    $db->query("delete from users where id = $_id");
+    if($db->error){
+            return $db->error;
+         }else{
+            return true;
+         }
     }
 }
 ?>

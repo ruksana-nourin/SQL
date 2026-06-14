@@ -1,5 +1,11 @@
 <?php
 require_once("models/user.class.php");
+require_once("models/role.class.php");
+
+$roles = Role::readAll();
+// echo '<pre>';
+// print_r($roles);
+// echo '</pre>';
 
 if (isset($_POST["btn_submit"])) {
   $name = $_POST["name"];
@@ -19,7 +25,7 @@ if (isset($_POST["btn_submit"])) {
       
     if ($res === true) {
       $msg = "User created successfully";
-      header("Location: manage.php ");
+      // header("Location: manage.php ");
 
     } else {
       $msg = $res;
@@ -58,6 +64,7 @@ if (isset($_POST["btn_submit"])) {
   <div class="app-content">
     <!--begin::Container-->
     <div class="container-fluid">
+      <a href="users" class="btn btn-sm btn-primary">&leftarrow; Back</a>
       <!--begin::Row-->
       <div class="col-md-6">
         <h3><?= $msg ?? ""; ?></h3>
@@ -80,9 +87,9 @@ if (isset($_POST["btn_submit"])) {
               <div class="mb-3">
                 <label>Role</label>
                 <select class="form-control" name="role_id" id="">
-                  <option value="1">Admin</option>
-                  <option value="2">Editor</option>
-                  <option value="3">Vendor</option>
+                  <?php foreach($roles as $item){?>
+                  <option value="<?= $item['id'];?>"><?= $item['name'];?></option>
+                  <?php } ?>
                 </select>
 
               </div>
