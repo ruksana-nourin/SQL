@@ -1,17 +1,7 @@
 <?php
-require_once("models/user.class.php");
-// echo "ok";
-if (isset($_POST["delete_id"])) {
-  $id = $_POST["delete_id"];
-  // echo $id;
-  $res = User::delete($id);
-  if ($res == true) {
-    $msg = "User deleted successfully!";
-  } else {
-    $msg = $res;
-  }
-}
-$rows = User::readAll();
+require_once("models/product.class.php");
+
+$rows = Product::readAll();
 // echo '<pre>';
 // print_r( $rows );
 // echo '</pre>';
@@ -75,13 +65,18 @@ $rows = User::readAll();
                     </tr>
                   </thead>
                   <tbody>
-                    <?php foreach ($rows as $item) { ?>
-
-
-                      <tr class="align-middle">
-                        <td><?= $item['id'] ?></td>
-                        <td><?= $item['name'] ?></td>
-                        <td><?= $item['email'] ?></td>
+                    <?php foreach ($rows as $item): ?>
+                      <tr>
+                        <td><?= $item['id'];?></td>
+                        <td><?= $item['name'];?></td>
+                        <td>
+                          <img src="<?= BASE_URL_ADMIN . $item['image'];?>" alt="" width="50">
+                        </td>
+                        <td><?= $item['price'];?></td>
+                        <td><?= $item['quantity'];?></td>
+                        <td><?= $item['brand'];?></td>
+                        <td><?= $item['category'];?></td>
+                        <td><?= $item['active']==1? 'Active': 'Inactive';?></td>
                         <td>
                           <div class="btn-group">
                             <button type="button" class="btn btn-sm btn-default"> <i
@@ -96,7 +91,7 @@ $rows = User::readAll();
                           </div>
                         </td>
                       </tr>
-                    <?php } ?>
+                    <?php endforeach; ?>
                   </tbody>
 
                 </table>

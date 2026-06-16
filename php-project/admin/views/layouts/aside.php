@@ -49,7 +49,7 @@
               </li>
               
             <li class="nav-item">
-                <a href="form" class="nav-link">
+                <a href="pos" class="nav-link">
                   <i class="fa-solid fa-barcode"></i>
                   <p>POS</p>
                 </a>

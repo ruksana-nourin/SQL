@@ -23,6 +23,9 @@ if (isset($_GET['page'])) {
     elseif ($page == 'create-product') {
         include_once('views/pages/products/create.php');
     } 
+    elseif ($page == 'pos') {
+        include_once('views/pages/pos.php');
+    } 
     
     else {
         include_once('views/pages/dashboard.php');

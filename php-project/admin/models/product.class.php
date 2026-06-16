@@ -58,6 +58,15 @@ class Product{
         return $db->error;
     }
 }
+static public function readAll(){
+    global $db;
+    $sql = "select p.id, p.name , p.price, p. quantity, b.name as brand , c.name as category, p.active, p.image
+    from products p, brands b, categories c
+    where p.brand_id=b.id and p.category_id =c.id
+     order by id desc";
+    $result= $db->query($sql);
+    return $result->fetch_all(MYSQLI_ASSOC);
+    }
 
 
    
