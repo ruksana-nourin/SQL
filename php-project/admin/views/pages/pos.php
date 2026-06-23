@@ -1,148 +1,164 @@
 <?php
-require_once("models/product.class.php");
+require_once 'models/product.class.php';
+require_once 'models/order.class.php';
 
 $rows = Product::readAll();
 // echo '<pre>';
-// print_r( $rows );
+// print_r($rows);
 // echo '</pre>';
+
+if (isset($_POST['checkout'])) {
+    $cart = json_decode($_POST['checkout']);
+    // echo "<pre>";
+    // print_r($cart);
+    // echo "</pre>";
+
+    $order = new Order();
+    $order->create($cart);
+    echo "
+        <script>
+            window.addEventListener('afterprint', () => {
+                localStorage.removeItem('cart');
+            });
+            window.print();
+        </script>
+    ";
+}
 ?>
+
 <style>
-    .app-sidebar,
-    .app-header,
-    .app-footer {
+    .main-sidebar,
+    .main-header,
+    .main-footer {
         display: none;
     }
+
+    .content-wrapper {
+        margin-left: 0px !important;
+    }
 </style>
-
-<!--begin::App Main-->
-<main class="app-main">
-    <!--begin::App Content Header-->
-    <div class="app-content-header">
-        <!--begin::Container-->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
         <div class="container-fluid">
-            <!--begin::Row-->
-            <div class="row">
+            <div class="row mb-2">
                 <div class="col-sm-6">
-
-                    <h3 style="color: red;"><?= $msg ?? ""; ?></h3>
-                    <!-- <div class="alert alert-danger" role="alert">
-          </div> -->
-
-                    <h3 class="mb-0">POS</h3>
+                    <h1>POS</h1>
                 </div>
                 <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-end">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Simple Tables</li>
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item active"><a href="products" class="btn btn-sm btn-dark">&larr; Back to Products</a></li>
                     </ol>
                 </div>
             </div>
-            <!--end::Row-->
-        </div>
-        <!--end::Container-->
-    </div>
-    <!--end::App Content Header-->
-    <!--begin::App Content-->
-    <div class="app-content">
-        <!--begin::Container-->
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
         <div class="container-fluid">
-            <!--begin::Row-->
             <div class="row">
-                <div class="col-md-12">
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <a class="btn btn-sm btn-primary" href="create-product">Create new products</a>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body p-0">
-                            <di class=" col-8">
-                                <div class="row">
-                                    <div class="col-8">
-                                        <div class="row">
-                                            <?php
-                                            foreach ($rows as $item):
-                                                if ($item['active'] == 0) {
-                                                    continue;
-                                                }
-                                                ?>
-                                                <div class="col-lg-3 col-sm-6">
-                                                    <div class="card" style="cursor: pointer"
-                                                        onclick="addToCart(<?= $item['id']; ?>,'<?= $item['name']; ?>',<?= $item['price']; ?>)">
-                                                        <img src="<?= BASE_URL_ADMIN . $item['image']; ?>" alt=""
-                                                            height="300" class="card-img p-3">
-                                                        <div class="card-body text-center">
-                                                            <h6><?= $item['name']; ?></h6>
-                                                            <h5 class="card-text">BDT <?= $item['price']; ?></h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            <?php endforeach; ?>
-                                        </div>
-                                        <!-- /.card -->
-                                    </div>
-                                    <div class="col-4">
-                                        <table class="table table-striped">
-                                            <tr class="table_secondary">
-                                                <th>Items</th>
-                                                <th>Qty</th>
-                                                <th>Amount</th>
-                                                <th></th>
-                                            </tr>
-                                            <tbody id="cartTbody">
-
-                                                <tr>
-                                                    <td>Product Name</td>
-                                                    <td>4</td>
-                                                    <td>1200</td>
-                                                    <td><i class="fa fa-trash text-danger"></i></td>
-                                                </tr>
-                                            </tbody>
-
-                                            <tr class="table_secondary">
-                                                <th>Total</th>
-                                                <th></th>
-                                                <th class="cartTotal">0</th>
-                                                <th></th>
-                                            </tr>
-
-
-                                        </table>
-                                        <form action="" method="POST" class="text-right">
-                                            <input type="hidden" name="checkout" id="cartInput">
-                                            <button type="submit" name="checkout">checkout</button>
-                                        </form>
+                <div class="col-8">
+                    <div class="row">
+                        <?php
+                        foreach ($rows as $item):
+                            if ($item['active'] == 0) {
+                                continue;
+                            }
+                        ?>
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="card" style="cursor: pointer"
+                                    onclick="addToCart(<?= $item['id']; ?>,'<?= $item['name']; ?>',<?= $item['price']; ?>)">
+                                    <img src="<?= BASE_URL_ADMIN . $item['image']; ?>" alt="" height="200" class="card-img p-3">
+                                    <div class="card-body text-center">
+                                        <h6><?= $item['name']; ?></h6>
+                                        <h5 class="card-text">BDT <?= $item['price']; ?></h5>
                                     </div>
                                 </div>
-
-
-
-                        </div>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
-                    <!-- /.card-body -->
-                    
-
+                    <!-- /.card -->
                 </div>
-                    
-
-
+                <div class="col-4">
+                    <table class="table table-border">
+                        <tr class="table-secondary">
+                            <th>Items</th>
+                            <th>QTY</th>
+                            <th>Amount</th>
+                            <th></th>
+                        </tr>
+                        <tbody id="cartTbody">
+                            <tr>
+                                <td>Product Name</td>
+                                <td>4</td>
+                                <td>1200</td>
+                                <td><a href=""><i class="fa fa-trash text-danger"></i></a></td>
+                            </tr>
+                        </tbody>
+                        <tr class="table-secondary">
+                            <th colspan="2">Total</th>
+                            <th id="cartTotal">0</th>
+                            <th></th>
+                        </tr>
+                    </table>
+                    <form action="" method="POST" class="text-right">
+                        <input type="hidden" name="checkout" id="cartInput">
+                        <button type="submit" class="btn btn-success">Checkout</button>
+                    </form>
+                </div>
             </div>
-            <!--end::Row-->
-        </div>
-        <!--end::Container-->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+<style>
+    @media screen {
+        .receipt{
+            display: none !important;
+        }
+    }
+    @media print {
+        .receipt{
+            display: block !important;
+        }
+        .content-wrapper{
+            display: none !important;
+        }
+    }
+</style>
+<div class="receipt" style="width: 300px; margin: 0 auto;">
+    <style>
+        #printCartTbody .btn-delete {
+            display: none;
+        }
+    </style>
+    <div class="text-center">
+        <h5>E-COM</h5>
+        <p>Date: 2026-05-12</p>
     </div>
-    <!--end::App Content-->
-</main>
-<!--end::App Main-->
+    <table class="table table-border">
+        <tr class="table-secondary">
+            <th>Items</th>
+            <th>QTY</th>
+            <th>Amount</th>
+        </tr>
+        <tbody id="printCartTbody">
+        </tbody>
+        <tr class="table-secondary">
+            <th colspan="2">Total</th>
+            <th id="printCartTotal">0</th>
+        </tr>
+    </table>
+</div>
+
 <script src="<?= BASE_URL_ADMIN; ?>helpers/cart-helper.js"></script>
 <script>
     var cart = new CartHelper("cart");
     // console.log(cart);
-    function printCart(){
-
-        console.log("My Items");
-        console.log(cart.getCart());
+    function printCart() {
         var items = cart.getCart();
-        document.querySelector
+        document.querySelector("#cartInput").value = JSON.stringify(items);
         var html = "";
         var total = 0;
         items.forEach(item => {
@@ -150,18 +166,26 @@ $rows = Product::readAll();
             <tr>
                 <td>${item.name}</td>
                 <td>${item.quantity}</td>
-                <td>${item.quantity*item.price}</td>
-                <td><a href=""><i class="fa fa-trash text-danger"></i></a></td>
+                <td>${item.quantity * item.price}</td>
+                <td class="btn-delete"><a href="javascript:;" onclick="removeFromCart(${item.id})"><i class="fa fa-trash text-danger"></i></a></td>
             </tr>
             `;
-            total+= (item.quantity*item.price);
+            total += (item.quantity * item.price);
         });
-        document.querySelector("#cartTbody").innerHTML = html;  
-        document.querySelector("#cartTotal").innerHTML = html;  
+        document.querySelector("#cartTbody").innerHTML = html;
+        document.querySelector("#cartTotal").innerHTML = total;
+        document.querySelector("#printCartTbody").innerHTML = html;
+        document.querySelector("#printCartTotal").innerHTML = total;
     }
     printCart();
-    function addToCart(id,name,price){
-        cart.addItem(id,name,price);
+
+    function removeFromCart(id) {
+        cart.removeItem(id);
+        printCart();
+    }
+
+    function addToCart(id, name, price) {
+        cart.addItem(id, name, price);
         printCart();
     }
 </script>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>attribute</title>
+    </head>
+    <body>
+        <input type="password" name="input" data-price="1000">
+        <button>Show/Hide</button>
+
+        <script src="js/jquery-4.0.0.min.js"></script>
+        <script>
+        // $("input").attr("name","username");
+        // let inputAttr = $("input").attr("name");
+        // console.log(inputAttr);
+
+        // $("input").attr({
+        //     "name" : "username",
+        //     "title" : "enter your name",
+        //     "height" : "50%",
+        //     "color" : "red"
+        // });
+
+        // $("input").data("price","2000");
+        // console.log( $("input").data("price"));
+        
+
+        $("button").click(function(){
+            let type= $("input").attr("type");
+            // console.log(type);
+            if(type =="password" ){
+                $("input").attr("type","text");
+            }else{
+                $("input").attr("type","password");
+            }
+        });
+    </script>
+    </body>
+</html>

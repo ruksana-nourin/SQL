@@ -1,0 +1,22 @@
+[
+  {
+    "userCode": "USR-001",
+    "name": "User 1"
+  },
+  {
+    "userCode": "USR-002",
+    "name": "User 2"
+  },
+  {
+    "userCode": "USR-003",
+    "name": "User 3"
+  },
+  {
+    "userCode": "USR-004",
+    "name": "User 4"
+  },
+  {
+    "userCode": "USR-005",
+    "name": "User 5"
+  }
+]
