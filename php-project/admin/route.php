@@ -26,6 +26,9 @@ if(isset($_GET['page'])){
     elseif($page == 'pos'){
         include_once('views/pages/pos.php');
     }
+    elseif($page == 'blog'){
+        include_once('views/pages/blog.php');
+    }
     else{
         include_once('views/pages/dashboard.php');
     }
