@@ -49,7 +49,8 @@ if (isset($_POST['checkout'])) {
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active"><a href="products" class="btn btn-sm btn-dark">&larr; Back to Products</a></li>
+                        <li class="breadcrumb-item active"><a href="products" class="btn btn-sm btn-dark">&larr; Back to
+                                Products</a></li>
                     </ol>
                 </div>
             </div>
@@ -63,25 +64,26 @@ if (isset($_POST['checkout'])) {
                 <div class="col-8">
                     <div>
 
-                        <select class="form-control mb-3"id="categoryFilter" style="width: 200px" name="" >
+                        <select class="form-control mb-3" id="categoryFilter" style="width: 200px" name="">
                             <option value="0">All</option>
-                            <?php foreach($categories as $Category):?>
-                                <option value="<?=$Category['id']; ?>"><?=$Category['name']; ?></option>
+                            <?php foreach ($categories as $Category): ?>
+                                <option value="<?= $Category['id']; ?>"><?= $Category['name']; ?></option>
                             <?php endforeach ?>
                         </select>
                     </div>
 
-                    <div class="row">
+                    <div class="row" id="productList">
                         <?php
                         foreach ($rows as $item):
-                            if ($item['active'] == 0) {
-                                continue;
-                            }
-                        ?>
+                            // if ($item['active'] == 0) {
+                            //     continue;
+                            // }
+                            ?>
                             <div class="col-lg-3 col-sm-6">
                                 <div class="card" style="cursor: pointer"
                                     onclick="addToCart(<?= $item['id']; ?>,'<?= $item['name']; ?>',<?= $item['price']; ?>)">
-                                    <img src="<?= BASE_URL_ADMIN . $item['image']; ?>" alt="" height="200" class="card-img p-3">
+                                    <img src="<?= BASE_URL_ADMIN . $item['image']; ?>" alt="" height="200"
+                                        class="card-img p-3">
                                     <div class="card-body text-center">
                                         <h6><?= $item['name']; ?></h6>
                                         <h5 class="card-text">BDT <?= $item['price']; ?></h5>
@@ -126,15 +128,17 @@ if (isset($_POST['checkout'])) {
 </div>
 <style>
     @media screen {
-        .receipt{
+        .receipt {
             display: none !important;
         }
     }
+
     @media print {
-        .receipt{
+        .receipt {
             display: block !important;
         }
-        .content-wrapper{
+
+        .content-wrapper {
             display: none !important;
         }
     }
@@ -166,7 +170,7 @@ if (isset($_POST['checkout'])) {
 
 <script src="<?= BASE_URL_ADMIN; ?>assets/js/jquery-4.0.0.min.js"></script>
 <script>
-    $("#categoryFilter").on("change", function(){
+    $("#categoryFilter").on("change", function () {
         // console.log($(this).val());
         // alert();
         let categoryId = $(this).val();
@@ -174,10 +178,28 @@ if (isset($_POST['checkout'])) {
             // url: "api/get-products?id=" +categoryId,
             url: `api/get-products?id=${categoryId}`,
             type: "get",
-            success: function(response){
-                console.log(response);
+            success: function (response) {
+                let products = JSON.parse(response)
+                console.log(products);
+                let html = "";
+                products.forEach(item => {
+                    html += ` 
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card" style="cursor: pointer"
+                            onclick="addToCart(${item['id']},'${item['name']}',${item['price']})">
+                            <img src="<?= BASE_URL_ADMIN ?>${item['image']}" alt="" height="200" class="card-img p-3">
+                            <div class="card-body text-center">
+                                <h6>${item['name']}</h6>
+                                <h5 class="card-text">BDT ${item['price']}</h5>
+                            </div>
+                        </div>
+                    </div>
+                            `
+                });
+                // console.log(html);
+                $("#productList").html(html);
             },
-            error: function(error){
+            error: function (error) {
                 console.log(error);
             }
 

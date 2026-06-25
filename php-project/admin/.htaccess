@@ -1,6 +1,6 @@
 RewriteEngine On
 
-RewriteRule ^api/(.*)$ api/api.php?method=$1 [L,QSA]
+RewriteRule ^api/(.*)$ api/api.php?endpoint=$1 [L,QSA]
 
 
 RewriteCond %{REQUEST_FILENAME} !-f

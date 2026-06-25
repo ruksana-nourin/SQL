@@ -1,6 +1,14 @@
 <?php
-function getProducts(){
-   echo json_encode (Product::readAllFilter(2));
+function getProducts($id){
+   // echo "function working";
+   // Product::readAllFilter(2);
+   if($id == 0){
+
+      echo json_encode (Product::readAll());
+   }else{
+
+      echo json_encode (Product::readAllFilter($id));
+   }
 }
 
 function getProductById(){
