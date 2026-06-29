@@ -43,13 +43,13 @@ if (isset($_POST["email"]) && isset($_POST["pass"])) {
 
         <form action="" method="post">
           <div class="input-group mb-3">
-            <input type="email" name="email" class="form-control" placeholder="Email" aria-label="Email">
+            <input type="email" name="email" class="form-control" placeholder="Email" aria-label="Email" value="admin@example.com" >
             <div class="input-group-text">
               <span class="bi bi-envelope"></span>
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="password" name="pass" class="form-control" placeholder="Password" aria-label="Password">
+            <input type="password" name="pass" class="form-control" placeholder="Password" aria-label="Password" value="111">
             <div class="input-group-text">
               <span class="bi bi-lock-fill"></span>
             </div>
