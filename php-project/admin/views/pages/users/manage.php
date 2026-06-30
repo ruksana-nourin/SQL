@@ -1,4 +1,5 @@
 <?php
+
 require_once 'models/user.class.php';
 
 if (isset($_POST['delete_id'])) {
@@ -20,13 +21,13 @@ $rows = User::readAll(1, $limit);
 // print_r($rows);
 // echo '</pre>';
 
-if(isset($_GET["pg"])) {
+if (isset($_GET["pg"])) {
   $pg = $_GET["pg"];
   // echo "<h1>$pg</h1>";
-$rows = User::readAll($pg, $limit);
+  $rows = User::readAll($pg, $limit);
 
-$previous = $pg - 1;
-$next = $pg + 1;
+  $previous = $pg - 1;
+  $next = $pg + 1;
 
 }
 ?>
@@ -61,9 +62,11 @@ $next = $pg + 1;
             </div>
           <?php endif; ?>
           <div class="card">
-            <div class="card-header">
-              <a href="create-user" class="btn btn-sm btn-dark">Create User</a>
-            </div>
+            <?php if ($_SESSION['role_id'] != 3 && $_SESSION['role_id'] != 4): ?>
+              <div class="card-header">
+                <a href="create-user" class="btn btn-sm btn-dark">Create User</a>
+              </div>
+            <?php endif; ?>
             <!-- /.card-header -->
             <div class="card-body p-0">
               <div class="table-responsive">
@@ -73,7 +76,9 @@ $next = $pg + 1;
                       <th>ID</th>
                       <th>Name</th>
                       <th>Email</th>
-                      <th>Actions</th>
+                      <?php if ($_SESSION['role_id'] != 3 && $_SESSION['role_id'] != 4) : ?>
+                        <th>Actions</th>
+                      <?php endif; ?>
                     </tr>
                   </thead>
                   <tbody>
@@ -82,19 +87,23 @@ $next = $pg + 1;
                         <td><?= $item['id'] ?></td>
                         <td><?= $item['name'] ?></td>
                         <td><?= $item['email'] ?></td>
-                        <td>
-                          <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-default"><i
-                                class="fa fa-eye text-primary"></i></button>
-                            <a href="edit-user?id=<?= $item['id']; ?>" class="btn btn-sm btn-default"><i
-                                class="fa fa-edit text-success"></i></a>
-                            <form method="POST">
-                              <input type="hidden" name="delete_id" value="<?= $item['id'] ?>">
-                              <button type="submit" class="btn btn-sm btn-default"><i
-                                  class="fa fa-trash text-danger"></i></button>
-                            </form>
-                          </div>
-                        </td>
+                        <?php if ($_SESSION['role_id'] != 3 && $_SESSION['role_id'] != 4) : ?>
+                          <td>
+                            <div class="btn-group">
+                              <button type="button" class="btn btn-sm btn-default"><i
+                                  class="fa fa-eye text-primary"></i></button>
+                              <a href="edit-user?id=<?= $item['id']; ?>" class="btn btn-sm btn-default"><i
+                                  class="fa fa-edit text-success"></i></a>
+                              <?php if ($_SESSION['role_id'] != 2): ?>
+                                <form method="POST">
+                                  <input type="hidden" name="delete_id" value="<?= $item['id'] ?>">
+                                  <button type="submit" class="btn btn-sm btn-default"><i
+                                      class="fa fa-trash text-danger"></i></button>
+                                </form>
+                              <?php endif; ?>
+                            </div>
+                          </td>
+                        <?php endif; ?>
                       </tr>
                     <?php } ?>
                   </tbody>
@@ -105,13 +114,15 @@ $next = $pg + 1;
             <div class="card-footer clearfix">
               <ul class="pagination pagination-sm m-0 float-right">
                 <li class="page-item"><a class="page-link" href="users?pg=1">« First page</a></li>
-                <li class="page-item <?= ($pg == 1) ? 'disabled' : '' ?>"><a class="page-link" href="users?pg=<?= $previous ?>">previous</a></li>
-                <?php for($i=1; $i <= $pages ; $i++):?>
-                <li class="page-item"><a class="page-link" href="users?pg=<?= $i ;?>"><?= $i ;?></a></li>
-                  <?php endfor;?>
-                <li class="page-item <?= ($pg == $pages) ? 'disabled' : '' ?>"><a class="page-link" href="users?pg=<?= $next ?>">Next</a></li>
+                <li class="page-item <?= ($pg == 1) ? 'disabled' : '' ?>"><a class="page-link"
+                    href="users?pg=<?= $previous ?>">previous</a></li>
+                <?php for ($i = 1; $i <= $pages; $i++): ?>
+                  <li class="page-item"><a class="page-link" href="users?pg=<?= $i; ?>"><?= $i; ?></a></li>
+                <?php endfor; ?>
+                <li class="page-item <?= ($pg == $pages) ? 'disabled' : '' ?>"><a class="page-link"
+                    href="users?pg=<?= $next ?>">Next</a></li>
 
-                <li class="page-item"><a class="page-link" href="users?pg=<?= $pages?>">Last page »</a></li>
+                <li class="page-item"><a class="page-link" href="users?pg=<?= $pages ?>">Last page »</a></li>
               </ul>
             </div>
           </div>

@@ -1,4 +1,7 @@
 <?php
+if($_SESSION['role_id'] ==3){
+    header("Location: access-deny");
+}
 require_once 'models/product.class.php';
 require_once 'models/order.class.php';
 require_once 'models/category.class.php';

@@ -106,7 +106,7 @@
         </div>
         <div class="sb-sidenav-footer">
             <div class="small">Logged in as:</div>
-           <?= $_SESSION['logggedInUser']['name']; ?>
+            Start Bootstrap
         </div>
     </nav>
 </div>
